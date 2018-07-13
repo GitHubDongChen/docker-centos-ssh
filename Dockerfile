@@ -1,6 +1,6 @@
 FROM centos
 
-MAINTAINER ydrdy "dongchen0530@hotmail.com"
+LABEL ydrdy "dongchen0530@hotmail.com"
 
 RUN yum install -y openssh-server \
 	&& echo 'helloworld' | passwd root --stdin \
@@ -8,9 +8,7 @@ RUN yum install -y openssh-server \
 	&& ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key \
 	&& ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key \
 	&& ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key \
-	&& mkdir /var/run/sshd \
-	&& yum clean all \
-	&& rm -rf /var/cache/yum 
+	&& mkdir /var/run/sshd
 
 EXPOSE 22
 
